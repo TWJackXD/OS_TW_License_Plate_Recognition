@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block body_class %}page-capture{% endblock %}
+
+{% block content %}
+<section class="md-camera-stage">
+  <div class="md-camera-frame">
+    <video id="preview" autoplay playsinline muted></video>
+    <img id="resultBoxed" class="hidden" alt="定格預覽" />
+    <div class="md-camera-scrim" id="cameraHint">
+      <span class="material-symbols-outlined">photo_camera</span>
+      <p>開啟相機後對準車牌</p>
+    </div>
+  </div>
+
+  <div class="md-chip-row">
+    <span class="md-chip" id="gpsPill">
+      <span class="material-symbols-outlined">location_off</span>
+      <span id="gpsPillText">GPS 尚未取得</span>
+    </span>
+    <span class="md-chip md-chip--assist" id="statusChip">
+      <span class="material-symbols-outlined">info</span>
+      <span id="status">準備就緒</span>
+    </span>
+  </div>
+
+  <div class="md-fab-row">
+    <button type="button" class="md-btn md-btn--tonal" id="btnStartCam">
+      <span class="material-symbols-outlined">videocam</span>
+      開啟相機
+    </button>
+    <button type="button" class="md-fab" id="btnCapture" disabled aria-label="拍照辨識">
+      <span class="material-symbols-outlined">camera</span>
+    </button>
+  </div>
+  <input id="fileFallback" type="file" accept="image/*" capture="environment" class="hidden" />
+</section>
+
+<section class="md-bottom-sheet hidden" id="resultCard">
+  <div class="md-bottom-sheet__handle" aria-hidden="true"></div>
+  <h2 class="md-section-title">辨識結果</h2>
+
+  <label class="md-field">
+    <span class="md-field__label">車牌號碼</span>
+    <input id="plateInput" type="text" placeholder="例如 ABC-1234" autocomplete="off" />
+  </label>
+  <div class="md-plate-display" id="plateDisplay">—</div>
+
+  <label class="md-field">
+    <span class="md-field__label">違規原因</span>
+    <textarea id="reasonInput" rows="3" placeholder="例如：紅線臨停、佔用身心障礙車位…"></textarea>
+  </label>
+
+  <p class="md-meta" id="metaLine"></p>
+  <p class="md-meta" id="usageLine" hidden></p>
+
+  <div class="md-btn-row">
+    <button type="button" class="md-btn md-btn--outlined" id="btnRetake">
+      <span class="material-symbols-outlined">refresh</span>
+      重新拍攝
+    </button>
+    <button type="button" class="md-btn md-btn--filled" id="btnSubmit">
+      <span class="material-symbols-outlined">send</span>
+      送出檢舉
+    </button>
+  </div>
+  <p class="md-meta" id="submitStatus"></p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/capture.js?v=20260731d" defer></script>
+{% endblock %}

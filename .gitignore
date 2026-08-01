@@ -1,0 +1,46 @@
+# Python
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+/runpod
+/runpod.pub
+
+# App runtime data
+data/uploads/**
+!data/uploads/**/.gitkeep
+data/*.db
+
+# Local datasets (keep folder markers only)
+images/**
+!images/.gitkeep
+output/**
+!output/.gitkeep
+
+# Build / containers
+*.tar
+*.tar.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+臺灣車牌辨識系統_簡要成果報告.pdf

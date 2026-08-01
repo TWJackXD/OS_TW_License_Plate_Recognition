@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body_class %}page-admin{% endblock %}
+{% block head %}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+{% endblock %}
+
+{% block content %}
+<section class="md-card">
+  <div class="md-card__header">
+    <h2 class="md-section-title">歷史紀錄</h2>
+    <span class="md-meta" id="recordCount"></span>
+  </div>
+  <div class="md-list" id="recordsList">
+    <div class="md-empty">載入中…</div>
+  </div>
+</section>
+
+<section class="md-card">
+  <div class="md-card__header">
+    <h2 class="md-section-title">地圖位置</h2>
+  </div>
+  <div id="map" class="md-map"></div>
+  <p class="md-meta md-map-hint" id="mapHint">點選紀錄可在地圖上定位。</p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+<script src="/static/admin.js?v=20260731c" defer></script>
+{% endblock %}

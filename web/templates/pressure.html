@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block body_class %}page-pressure{% endblock %}
+
+{% block content %}
+<section class="md-card pressure-card">
+  <div class="md-card__header">
+    <h2 class="md-section-title">API 壓力測試</h2>
+    <span class="md-meta" id="pressureStatus">選擇多張圖片後開始</span>
+  </div>
+  <p class="md-meta pressure-hint">
+    隱藏頁面（不在導覽列）。依序呼叫 <code>/api/recognize</code>；遇 429 會自動改用 fallback 重試同一張圖。
+  </p>
+
+  <div class="pressure-controls">
+    <label class="md-btn md-btn--outlined pressure-file-btn">
+      <span class="material-symbols-outlined" aria-hidden="true">upload</span>
+      選擇圖片
+      <input type="file" id="pressureFiles" accept="image/*" multiple hidden />
+    </label>
+    <label class="pressure-concurrency">
+      並行
+      <select id="pressureConcurrency" aria-label="並行數量">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </label>
+    <button type="button" class="md-btn md-btn--filled" id="pressureStart" disabled>
+      開始測試
+    </button>
+    <button type="button" class="md-btn md-btn--outlined" id="pressureClear" disabled>
+      清除
+    </button>
+  </div>
+
+  <div class="pressure-summary" id="pressureSummary" hidden>
+    <div class="pressure-summary__item">
+      <span class="pressure-summary__label">完成</span>
+      <span class="pressure-summary__value" id="sumDone">0 / 0</span>
+    </div>
+    <div class="pressure-summary__item">
+      <span class="pressure-summary__label">總金額</span>
+      <span class="pressure-summary__value" id="sumCost">—</span>
+    </div>
+    <div class="pressure-summary__item">
+      <span class="pressure-summary__label">平均秒數</span>
+      <span class="pressure-summary__value" id="sumAvgSec">—</span>
+    </div>
+    <div class="pressure-summary__item">
+      <span class="pressure-summary__label">總秒數</span>
+      <span class="pressure-summary__value" id="sumTotalSec">—</span>
+    </div>
+  </div>
+
+  <div class="pressure-table-wrap">
+    <table class="pressure-table" id="pressureTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>圖片</th>
+          <th>檔名</th>
+          <th>車牌</th>
+          <th>模型</th>
+          <th>Token</th>
+          <th>金額</th>
+          <th>秒數</th>
+          <th>狀態</th>
+        </tr>
+      </thead>
+      <tbody id="pressureBody">
+        <tr class="pressure-empty">
+          <td colspan="9">尚未選擇圖片</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/pressure.js?v=20260731f" defer></script>
+{% endblock %}
