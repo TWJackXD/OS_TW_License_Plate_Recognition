@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body_class %}page-permit{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/permit.css?v=20260802a" />
+{% endblock %}
+
+{% block content %}
+{% include "permit_nav.html" %}
+<section class="md-card">
+  <div class="md-card__header">
+    <h2 class="md-section-title">查詢車證</h2>
+  </div>
+  <p class="md-meta">輸入車牌號碼，查詢是否擁有車證及持有人資料。</p>
+  <form id="lookupForm" class="permit-form">
+    <label class="md-field">
+      <span class="md-field__label">車牌號碼</span>
+      <input id="plate" name="plate" type="text" placeholder="例如 ABC-1234" autocomplete="off" required />
+    </label>
+    <div class="md-btn-row">
+      <button type="submit" class="md-btn md-btn--filled" id="lookupBtn">查詢</button>
+    </div>
+  </form>
+  <p class="md-meta permit-msg" id="lookupMsg" hidden></p>
+  <div id="lookupResult" class="permit-result" hidden></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/permit_common.js?v=20260802a" defer></script>
+<script src="/static/permit_lookup.js?v=20260802a" defer></script>
+{% endblock %}

@@ -1,0 +1,305 @@
+/* Permit module extras (on top of core style.css) */
+
+.permit-subnav {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+  flex-wrap: wrap;
+}
+
+.permit-subnav__item {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.permit-subnav__item.is-active {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border-color: transparent;
+}
+
+.permit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.permit-form--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.permit-form--grid .md-field--full,
+.permit-form--grid .md-btn-row {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .permit-form--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.permit-msg {
+  margin-top: 0.75rem;
+}
+
+.permit-msg--ok {
+  color: #0f766e;
+}
+
+.permit-msg--error {
+  color: var(--md-sys-color-error);
+}
+
+.permit-msg--warn {
+  color: #9a6700;
+}
+
+.permit-result {
+  margin-top: 0.75rem;
+}
+
+.permit-dl {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+}
+
+.permit-dl dt {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.85rem;
+}
+
+.permit-dl dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.permit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.permit-table th,
+.permit-table td {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.permit-table__actions {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.ticket-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-radius-md);
+  background: var(--md-sys-color-surface-container);
+}
+
+.ticket-item__meta {
+  font-size: 0.82rem;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 0.15rem;
+}
+
+.permit-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.permit-badge--ok {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.permit-badge--none {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+@media (max-width: 640px) {
+  .ticket-item {
+    grid-template-columns: auto 1fr;
+  }
+  .ticket-item .permit-badge,
+  .ticket-item .md-btn {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/* Off-screen capture area for PDF — 58×80 mm @ 96dpi ≈ 219×302 px */
+.print-area {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 219px;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.print-area--capturing {
+  /* keep in DOM for html2canvas */
+}
+
+/* ========== 58×80 mm thermal ticket (B1) ========== */
+.ticket {
+  --ink: #000;
+  width: 219px;
+  height: 302px;
+  padding: 5px 4px 5px;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Noto Serif TC", "Noto Sans TC", "Source Han Serif TC", "MingLiU", serif;
+  font-size: 7.5px;
+  line-height: 1.25;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+}
+
+.ticket__head {
+  text-align: center;
+  margin: 8px 0 6px;
+  padding: 6px 0;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.ticket__org {
+  margin: 6px 0;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ticket__title {
+  margin: 8px 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.ticket__docno {
+  margin: 6px 0 4px;
+  font-size: 7px;
+  letter-spacing: 0.03em;
+}
+
+.ticket__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 3px;
+  font-size: 7.5px;
+}
+
+.ticket__table th,
+.ticket__table td {
+  border: 1px solid var(--ink);
+  padding: 1px 2px;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.ticket__table th {
+  width: 12%;
+  background: transparent;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ticket__plate {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Left half / right half split at center */
+.ticket__name {
+  width: 38%;
+}
+
+.ticket__sid-label {
+  width: 12%;
+}
+
+.ticket__sid {
+  width: 38%;
+}
+
+.ticket__block {
+  margin: 6px 0;
+}
+
+.ticket__label {
+  margin: 6px 0;
+  font-weight: 700;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0;
+  letter-spacing: 0.06em;
+  font-size: 7.5px;
+}
+
+.ticket__block > p:not(.ticket__label) {
+  margin: 1px 0 0;
+  font-size: 7px;
+}
+
+.ticket__list {
+  margin: 1px 0 0;
+  padding-left: 1em;
+  font-size: 7px;
+}
+
+.ticket__list li {
+  margin-bottom: 0;
+}
+
+.ticket__table--sign th {
+  width: 40px;
+}
+
+.ticket__sign-cell {
+  height: 16px;
+}
+
+.ticket__footer-note {
+  margin: 2px 0 10px;
+  font-size: 6.5px;
+  text-align: center;
+  color: #222;
+  letter-spacing: 0.02em;
+}

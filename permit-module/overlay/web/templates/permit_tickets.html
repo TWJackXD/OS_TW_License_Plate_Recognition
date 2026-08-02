@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block body_class %}page-permit{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/permit.css?v=20260803j" />
+{% endblock %}
+
+{% block content %}
+{% include "permit_nav.html" %}
+<section class="md-card no-print">
+  <div class="md-card__header">
+    <h2 class="md-section-title">列印罰單</h2>
+  </div>
+  <p class="md-meta">違規資料來自同一套回報系統。輸出固定 <strong>58×80 mm</strong> 熱感紙格式（B1 標籤）。</p>
+  {% if niimbot_ui %}
+  <div class="md-chip-row" style="margin-bottom: 0.75rem">
+    <span class="md-chip" id="printerPill">
+      <span class="material-symbols-outlined">print</span>
+      <span id="printerPillText">印表機未連接</span>
+    </span>
+  </div>
+  {% endif %}
+  <div class="md-btn-row md-btn-row--tight">
+    <button type="button" class="md-btn md-btn--tonal" id="reloadBtn">重新載入</button>
+    <button type="button" class="md-btn md-btn--tonal" id="selectAllBtn">全選</button>
+    <button type="button" class="md-btn md-btn--tonal" id="clearSelBtn">清除選取</button>
+    <button type="button" class="md-btn md-btn--danger" id="deleteSelBtn" disabled>刪除選取</button>
+    <button type="button" class="md-btn md-btn--filled" id="pdfBtn" disabled>下載合併 PDF</button>
+    {% if niimbot_ui %}
+    <button type="button" class="md-btn md-btn--tonal" id="btnConnectPrinter">
+      <span class="material-symbols-outlined">bluetooth</span>
+      連接印表機
+    </button>
+    <button type="button" class="md-btn md-btn--filled" id="printB1Btn" disabled>B1 列印選取</button>
+    {% endif %}
+  </div>
+  <p class="md-meta permit-msg" id="ticketMsg" hidden></p>
+  <div class="ticket-list" id="ticketList"></div>
+  <p class="md-empty" id="ticketEmpty" hidden>尚無違規資料。請先在回報頁送出違規。</p>
+</section>
+
+<div id="printRoot" class="print-area" aria-hidden="true"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" defer></script>
+{% if niimbot_ui %}
+<script>
+  window.__NIIMBOT_CONFIG = {{ niimbot_config | tojson }};
+</script>
+<script src="/static/vendor/niimbot.js?v=20260803d" defer></script>
+<script src="/static/niimbot_print.js?v=20260803j" defer></script>
+{% endif %}
+<script src="/static/permit_common.js?v=20260803d" defer></script>
+<script src="/static/permit_tickets.js?v=20260803h" defer></script>
+{% endblock %}

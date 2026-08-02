@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "comment": "可選補充地標（OSM 沒有或名稱不準時）。座標請落在校區多邊形內；系統用最近距離判斷。",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "管理學院" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.3375, 22.7565]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "行政大樓" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.3380, 22.7569]
+      }
+    }
+  ]
+}

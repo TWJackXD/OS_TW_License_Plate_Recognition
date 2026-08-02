@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block body_class %}page-permit{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/permit.css?v=20260802b" />
+{% endblock %}
+
+{% block content %}
+{% include "permit_nav.html" %}
+<section class="md-card">
+  <div class="md-card__header">
+    <h2 class="md-section-title" id="formTitle">新增車證</h2>
+  </div>
+  <p class="md-meta">填寫持有人與車輛資料後儲存。</p>
+  <form id="permitForm" class="permit-form permit-form--grid">
+    <label class="md-field">
+      <span class="md-field__label">車牌號碼 *</span>
+      <input id="plate_number" name="plate_number" required />
+    </label>
+    <label class="md-field">
+      <span class="md-field__label">姓名 *</span>
+      <input id="name" name="name" required />
+    </label>
+    <label class="md-field">
+      <span class="md-field__label">校區 *</span>
+      <select id="campus" name="campus" required>
+        <option value="" disabled selected>請選擇校區</option>
+        <option value="第一">第一</option>
+        <option value="建工">建工</option>
+        <option value="楠梓">楠梓</option>
+        <option value="燕巢">燕巢</option>
+        <option value="旗津">旗津</option>
+        <option value="東方">東方</option>
+      </select>
+    </label>
+    <label class="md-field">
+      <span class="md-field__label">系級 *</span>
+      <input id="department" name="department" required placeholder="例如 資工三" />
+    </label>
+    <label class="md-field">
+      <span class="md-field__label">學號</span>
+      <input id="student_id" name="student_id" />
+    </label>
+    <label class="md-field md-field--full">
+      <span class="md-field__label">備註</span>
+      <textarea id="note" name="note" rows="2"></textarea>
+    </label>
+    <div class="md-btn-row md-field--full">
+      <button type="submit" class="md-btn md-btn--filled" id="saveBtn">新增</button>
+      <button type="button" class="md-btn md-btn--tonal" id="cancelEditBtn" hidden>取消編輯</button>
+    </div>
+  </form>
+  <p class="md-meta permit-msg" id="manageMsg" hidden></p>
+</section>
+
+<section class="md-card">
+  <div class="md-card__header md-card__header--stack">
+    <div class="md-card__title-row">
+      <h2 class="md-section-title">車證列表</h2>
+      <span class="md-meta" id="permitCount"></span>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table class="permit-table" id="permitTable" hidden>
+      <thead>
+        <tr>
+          <th>車牌</th>
+          <th>姓名</th>
+          <th>校區</th>
+          <th>系級</th>
+          <th>學號</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="permitTableBody"></tbody>
+    </table>
+    <p class="md-empty" id="permitEmpty">載入中…</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/permit_common.js?v=20260802b" defer></script>
+<script src="/static/permit_manage.js?v=20260802b" defer></script>
+{% endblock %}

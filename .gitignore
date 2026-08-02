@@ -1,46 +1,27 @@
 # Python
 .venv/
-venv/
 __pycache__/
 **/__pycache__/
 *.py[cod]
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
 
-# Local env / secrets
+# Secrets
 .env
 .env.*
 !.env.example
-*.pem
-*.key
-id_rsa*
-id_ed25519*
-/runpod
-/runpod.pub
+!permit-module/overlay/.env.example
+!niimbot-module/overlay/.env.example
 
-# App runtime data
+# Runtime data
+**/*.db
 data/uploads/**
 !data/uploads/**/.gitkeep
-data/*.db
+data/cache/
 
-# Local datasets (keep folder markers only)
-images/**
-!images/.gitkeep
-output/**
-!output/.gitkeep
+# After install (source of truth is *-module/)
+/modules/
 
-# Build / containers
-*.tar
-*.tar.gz
-
-# OS / editor
+# OS / IDE
 .DS_Store
-Thumbs.db
-.idea/
+*.log
 .vscode/
-*.swp
-*~
-
-臺灣車牌辨識系統_簡要成果報告.pdf
+**/node_modules/
