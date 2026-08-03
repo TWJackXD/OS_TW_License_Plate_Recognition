@@ -64,7 +64,7 @@ Write-Host @"
   $StartHint
 
   使用 Chrome／Edge（需 HTTPS 或本機 localhost）開啟回報頁，
-  先按「連接印表機」配對 Niimbot B1，送出違規後會即時列印 58×80mm 罰單。
+  先按「連接印表機」配對 Niimbot B1，送出違規後會即時列印 50×80mm 罰單。
 
 無需 npm。
 "@

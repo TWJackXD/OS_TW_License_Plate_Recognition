@@ -1,8 +1,8 @@
 /**
- * Niimbot B1 instant ticket print (58×80 mm @ 300 dpi artwork).
+ * Niimbot B1 instant ticket print (50×80 mm @ 300 dpi artwork).
  * Depends on /static/vendor/niimbot.js → window.Niimbot
  *
- * Label artwork is drawn at true 58×80 mm pixels (685×945 @ 300 dpi).
+ * Label artwork is drawn at true 50×80 mm pixels (591×945 @ 300 dpi).
  * B1 printhead is ~384 px @ 203 dpi; Bluetooth print scales to printhead size.
  */
 (() => {
@@ -10,14 +10,14 @@
   const DENSITY = Math.max(1, Math.min(5, Number(CFG.density) || 3));
   const LABEL_TYPE = CFG.label_type != null ? Number(CFG.label_type) : 1;
 
-  // True 58×80 mm @ 300 dpi (PDF + master artwork)
+  // True 50×80 mm @ 300 dpi (PDF + master artwork)
   const DPI = 300;
-  const LABEL_W = 685; // 58 / 25.4 * 300 ≈ 685
+  const LABEL_W = 591; // 50 / 25.4 * 300 ≈ 591
   const LABEL_H = 945; // 80 / 25.4 * 300 ≈ 945
 
-  // B1 printhead printable size @ 203 dpi
+  // B1 printhead printable size @ 203 dpi (50 mm ≈ 400 px; capped to printhead)
   const PRINT_W = 384;
-  const PRINT_H = 640;
+  const PRINT_H = 640; // 80 / 25.4 * 203 ≈ 640
 
   const FONT = "'Noto Serif TC','Noto Sans TC','Microsoft JhengHei',serif";
 
@@ -33,8 +33,8 @@
     name_prefixes: ["B1"],
   };
 
-  const SIZE = { w_px: PRINT_W, h_px: PRINT_H, w_mm: 58, h_mm: 80, dpi: 203 };
-  const LABEL_SIZE = { w_px: LABEL_W, h_px: LABEL_H, w_mm: 58, h_mm: 80, dpi: DPI };
+  const SIZE = { w_px: PRINT_W, h_px: PRINT_H, w_mm: 50, h_mm: 80, dpi: 203 };
+  const LABEL_SIZE = { w_px: LABEL_W, h_px: LABEL_H, w_mm: 50, h_mm: 80, dpi: DPI };
 
   let connected = false;
   let lastPayload = null;
@@ -262,7 +262,7 @@
     return URL.createObjectURL(blob);
   }
 
-  /** Scale master 58×80 artwork to B1 printhead size. */
+  /** Scale master 50×80 artwork to B1 printhead size. */
   function scaleForPrinthead(src) {
     const out = document.createElement("canvas");
     out.width = PRINT_W;
@@ -274,7 +274,7 @@
     return out;
   }
 
-  /** Render true 58×80 mm @ 300 dpi ticket canvas (685×945) — use for PDF. */
+  /** Render true 50×80 mm @ 300 dpi ticket canvas (591×945) — use for PDF. */
   function renderTicketCanvas(violation, permit) {
     const canvas = document.createElement("canvas");
     drawTicket(canvas, violation || {}, permit || null);

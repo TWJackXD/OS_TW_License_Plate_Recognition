@@ -1,12 +1,12 @@
 # Niimbot B1 即時列印模組
 
-可選模組：手機 **Chrome／Edge** 經 **Web Bluetooth** 連 **Niimbot B1（203 dpi）**，在回報送出寫入資料庫後即時列印 **58×80 mm** 罰單。
+可選模組：手機 **Chrome／Edge** 經 **Web Bluetooth** 連 **Niimbot B1（203 dpi）**，在回報送出寫入資料庫後即時列印 **50×80 mm** 罰單。
 
 > 不使用 Node/USB 版 [niimbotjs](https://github.com/dtgreene/niimbotjs)（僅適合電腦插印表機）。瀏覽器 driver 採 [niimbot-web-bluetooth](https://github.com/iscarelli/niimbot-web-bluetooth)（已 vendoring）。
 
 ## 需求
 
-- Niimbot **B1**、58×80 mm 熱感紙（預設視為有間隙／黑標）
+- Niimbot **B1**、50×80 mm 熱感紙（預設視為有間隙／黑標）
 - 瀏覽器：Chrome 或 Edge（支援 Web Bluetooth）
 - 頁面須為 **HTTPS** 或 **localhost**（手機連區網 IP 時需 HTTPS 或埠轉發）
 - 同一套 `python run.py`（安裝端無需 npm）
@@ -41,4 +41,4 @@ python run.py
 
 ## 畫布
 
-B1 印頭寬約 **384 px**（203 dpi）；紙長 80 mm → **640 px**。版面為正式罰單表格。
+B1 印頭寬約 **384 px**（203 dpi）；紙寬 50 mm、紙長 80 mm → 列印緩衝 **384×640 px**（母稿 591×945 @ 300 dpi）。版面為正式罰單表格。
