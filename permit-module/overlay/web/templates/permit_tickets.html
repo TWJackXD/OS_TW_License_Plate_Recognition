@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body_class %}page-permit{% endblock %}
 {% block head %}
-<link rel="stylesheet" href="/static/permit.css?v=20260803j" />
+<link rel="stylesheet" href="/static/permit.css?v=20260803k" />
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
   <div class="md-card__header">
     <h2 class="md-section-title">列印罰單</h2>
   </div>
-  <p class="md-meta">違規資料來自同一套回報系統。輸出固定 <strong>58×80 mm</strong> 熱感紙格式（B1 標籤）。</p>
+  <p class="md-meta">違規資料來自同一套回報系統。輸出固定 <strong>50×80 mm</strong> 熱感紙格式（B1 標籤）。</p>
   {% if niimbot_ui %}
   <div class="md-chip-row" style="margin-bottom: 0.75rem">
     <span class="md-chip" id="printerPill">
@@ -52,5 +52,5 @@
 <script src="/static/niimbot_print.js?v=20260803j" defer></script>
 {% endif %}
 <script src="/static/permit_common.js?v=20260803d" defer></script>
-<script src="/static/permit_tickets.js?v=20260803h" defer></script>
+<script src="/static/permit_tickets.js?v=20260803k" defer></script>
 {% endblock %}

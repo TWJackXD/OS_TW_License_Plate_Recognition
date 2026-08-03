@@ -14,7 +14,7 @@
   const printerPillText = document.getElementById("printerPillText");
   const { showMsg, escapeHtml } = window.PermitUI;
 
-  const PAPER_W_MM = 58;
+  const PAPER_W_MM = 50;
   const PAPER_H_MM = 80;
 
   /** @type {{key:string, selected:boolean, violation:any, permit:any|null}[]} */
@@ -341,8 +341,8 @@
       }
 
       const stamp = new Date().toISOString().slice(0, 10);
-      pdf.save(`tickets-58x80-${stamp}.pdf`);
-      showMsg(msg, `已下載 ${targets.length} 張 58×80mm 罰單 PDF`, "ok");
+      pdf.save(`tickets-50x80-${stamp}.pdf`);
+      showMsg(msg, `已下載 ${targets.length} 張 50×80mm 罰單 PDF`, "ok");
     } catch (err) {
       showMsg(msg, err.message || String(err), "error");
     } finally {

@@ -160,12 +160,12 @@
   }
 }
 
-/* Off-screen capture area for PDF — 58×80 mm @ 96dpi ≈ 219×302 px */
+/* Off-screen capture area for PDF — 50×80 mm @ 96dpi ≈ 189×302 px */
 .print-area {
   position: fixed;
   left: -10000px;
   top: 0;
-  width: 219px;
+  width: 189px;
   pointer-events: none;
   opacity: 1;
 }
@@ -174,10 +174,10 @@
   /* keep in DOM for html2canvas */
 }
 
-/* ========== 58×80 mm thermal ticket (B1) ========== */
+/* ========== 50×80 mm thermal ticket (B1) ========== */
 .ticket {
   --ink: #000;
-  width: 219px;
+  width: 189px;
   height: 302px;
   padding: 5px 4px 5px;
   box-sizing: border-box;
